@@ -2,6 +2,7 @@
 import ConfigParser
 import argparse
 import importlib
+import os
 
 
 if __name__ == "__main__":
@@ -32,6 +33,11 @@ if __name__ == "__main__":
     conf_file = args.config if args.config else default_path
     config = ConfigParser.ConfigParser()
     config.readfp(open(conf_file))
+
+    # configure the boto3 environment variable for the .conf file path
+    os.environ['AWS_CONFIG_FILE'] = args.config if args.config else default_path
+    # configure the boto3 environment variable for the desired AWS profile in the .conf file
+    os.environ['AWS_PROFILE'] = args.account
 
     # Tricky part is to dynamically import ONLY one module
     # for the serice that was requested by CLI argument
