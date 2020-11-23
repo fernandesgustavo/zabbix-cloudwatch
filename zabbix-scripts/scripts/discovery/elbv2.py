@@ -1,5 +1,5 @@
-#!/usr/bin/python
-from basic_discovery import BasicDiscoverer
+#!/usr/bin/python3.6
+from .basic_discovery import BasicDiscoverer
 
 import re
 

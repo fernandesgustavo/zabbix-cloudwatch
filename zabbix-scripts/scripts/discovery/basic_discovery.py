@@ -1,5 +1,5 @@
-#!/usr/bin/python
-from aws_client import AWSClient
+#!/usr/bin/python3.6
+from .aws_client import AWSClient
 import json
 
 

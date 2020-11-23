@@ -1,5 +1,5 @@
-#!/usr/bin/python
-import ConfigParser
+#!/usr/bin/python3.6
+import configparser
 import argparse
 import importlib
 import os
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     # Config contains credentials for specified accounts (see sample config)
     default_path = "/usr/lib/zabbix/scripts/conf/aws.conf"
     conf_file = args.config if args.config else default_path
-    config = ConfigParser.ConfigParser()
+    config = configparser.ConfigParser()
     config.readfp(open(conf_file))
 
     # configure the boto3 environment variable for the .conf file path
@@ -47,4 +47,4 @@ if __name__ == "__main__":
     # Create instance of discoverer from this module and run actual discovery
     d = discovery_module.Discoverer(config, args.account,
                                     args.service, args.region)
-    print d.get_instances(*args.args)
+    print(d.get_instances(*args.args))
